@@ -24,7 +24,7 @@ public class ProductCategory {
     @Column(name = "DESCRPTION")
     private String description;
     
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "productCatogory")
     List<Product> products;
 
 	public Long getProductCategoryId() {
