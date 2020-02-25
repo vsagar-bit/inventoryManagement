@@ -26,7 +26,7 @@ public class OrderDetails {
     @Column(name = "DISCOUNT")
     private Integer discount;
     
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "ORDER_ID")
 	private Order order;
     
