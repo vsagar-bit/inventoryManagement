@@ -28,7 +28,7 @@ public class Order {
 	@Column(name = "NET_AMOUNT")
 	private Long netAmount;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "order")
 	private List<OrderDetails> orderItems;
 	
 	public Long getOrderId() {
