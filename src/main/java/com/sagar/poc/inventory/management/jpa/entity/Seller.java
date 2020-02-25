@@ -28,7 +28,7 @@ public class Seller {
     @Column(name = "IS_ACTIVE")
     private String isActive;
     
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "seller")
     List<Product> products;
 
 	public Long getId() {
