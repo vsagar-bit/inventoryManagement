@@ -10,5 +10,6 @@ public interface ProductCategoryService {
 	public ProductCategory createProductCategory(ProductCategory productCategories);
 	public Optional<ProductCategory> getProductCategory(Long id);
 	public List<ProductCategory> listOfProdctCategories();
+	public ProductCategory getByName (String name);
 	
 }

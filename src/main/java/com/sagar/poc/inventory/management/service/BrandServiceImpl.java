@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sagar.poc.inventory.management.jpa.entity.Brand;
 import com.sagar.poc.inventory.management.jpa.repository.BrandRepository;
 
+@Service
 public class BrandServiceImpl implements BrandService{
 
 	@Autowired
@@ -25,7 +27,7 @@ public class BrandServiceImpl implements BrandService{
 	}
 	
 	@Override
-	public List<Brand> getBrandByName(String name) {
+	public Brand getBrandByName(String name) {
 		
 		return brandRepo.getBrandByName(name);
 	}

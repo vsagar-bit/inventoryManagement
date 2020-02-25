@@ -33,4 +33,28 @@ public class ProductServiceImpl implements  ProductService {
 		return (List<Product>) productRepository.findAll();
 	}
 
+	@Override
+	public List<Product> getByBrandIdAndType(Long brandId, Long categoryId) {
+		
+		return productRepository.getByBrandIdAndType(brandId, categoryId);
+	}
+
+	@Override
+	public List<Product> getByColorAndType(String color, Long categoryId) {
+		
+		return productRepository.getByColorAndType(color, categoryId);
+	}
+
+	@Override
+	public List<Product> getByPriceAndType(Long price, Long categoryId) {
+		
+		return productRepository.getByPriceAndType(price, categoryId);
+	}
+
+	@Override
+	public List<Product> getBySizeAndType(String size, Long categoryId) {
+		
+		return productRepository.getBySizeAndType(size, categoryId);
+	}
+
 }

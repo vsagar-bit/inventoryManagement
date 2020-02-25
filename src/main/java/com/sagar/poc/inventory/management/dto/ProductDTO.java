@@ -1,51 +1,18 @@
-package com.sagar.poc.inventory.management.jpa.entity;
+package com.sagar.poc.inventory.management.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.ManyToAny;
-
-@Entity
-@Table(name = "Product")
-public class Product {
+public class ProductDTO {
 	
-	@Id
-	@Column(name = "PRODUCT_ID")
 	private Long productId;
-	@Column(name = "PRODUCT_NAME")
 	private String productName;
-	@Column(name = "COLOR")
 	private String color;
-	@Column(name = "SIZE")
 	private String size;
-	@Column(name = "PURCHASE_PRICE")
 	private Long purchasePrice;
-	@Column(name = "SALE_PRICE")
 	private Long salePrice;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "BRAND_ID")
-	private Brand brand;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "PRODUCTCATOGORY_ID")
-	private ProductCategory productCatogory;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "SELLER_ID")
-    private Seller seller;
-	
-	@Column(name = "QUANTITY")
+	private BrandDTO brand;
+	private ProductCategoryDTO productCatogory;
+    private SellerDTO seller;
 	private Long quantity;
-	@Column(name = "DESCRIPTION")
 	private String description;
-	@Column(name = "IMAGE_PATH")
 	private String imagePath;
 	
 	public Long getProductId() {
@@ -109,22 +76,22 @@ public class Product {
 	public void setSize(String size) {
 		this.size = size;
 	}
-	public Brand getBrand() {
+	public BrandDTO getBrand() {
 		return brand;
 	}
-	public void setBrand(Brand brand) {
+	public void setBrand(BrandDTO brand) {
 		this.brand = brand;
 	}
-	public ProductCategory getProductCatogory() {
+	public ProductCategoryDTO getProductCatogory() {
 		return productCatogory;
 	}
-	public void setProductCatogory(ProductCategory productCatogory) {
+	public void setProductCatogory(ProductCategoryDTO productCatogory) {
 		this.productCatogory = productCatogory;
 	}
-	public Seller getSeller() {
+	public SellerDTO getSeller() {
 		return seller;
 	}
-	public void setSeller(Seller seller) {
+	public void setSeller(SellerDTO seller) {
 		this.seller = seller;
 	}
 	

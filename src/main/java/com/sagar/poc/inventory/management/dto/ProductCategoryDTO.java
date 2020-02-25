@@ -1,31 +1,16 @@
-package com.sagar.poc.inventory.management.jpa.entity;
+package com.sagar.poc.inventory.management.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+public class ProductCategoryDTO {
 
-@Entity
-@Table(name = "ProductCategory")
-public class ProductCategory {
-
-    @Id
-    @Column(name = "PRODUCTCATOGORY_ID")
     private Long productCategoryId;
 
-    @Column(name = "PRODUCTCATOGORY_NAME")
     private String productCategoryName;
 
-    @Column(name = "DESCRPTION")
     private String description;
     
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "productCatogory")
-    List<Product> products;
+    List<ProductDTO> products;
 
 	public Long getProductCategoryId() {
 		return productCategoryId;
@@ -59,11 +44,11 @@ public class ProductCategory {
 		this.productCategoryName = productCategoryName;
 	}
 
-	public List<Product> getProducts() {
+	public List<ProductDTO> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(List<ProductDTO> products) {
 		this.products = products;
 	}
 

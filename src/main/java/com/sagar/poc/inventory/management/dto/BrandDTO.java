@@ -1,34 +1,18 @@
-package com.sagar.poc.inventory.management.jpa.entity;
+package com.sagar.poc.inventory.management.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+public class BrandDTO {
 
-@Entity
-@Table(name = "Brand")
-public class Brand {
-
-    @Id
-    @Column(name = "ID")
     private Long id;
     
-    @Column(name = "BRAND_NAME")
     private String brandName;
 
-    @Column(name = "LOGO")
     private String logo;
     
-    @Column(name = "DESCRIPTION")
     private String description;
     
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "brand")
-    List<Product> products;
+    List<ProductDTO> products;
 
     public Long getId() {
         return id;
@@ -62,11 +46,11 @@ public class Brand {
         this.description = description;
     }
 
-	public List<Product> getProducts() {
+	public List<ProductDTO> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(List<ProductDTO> products) {
 		this.products = products;
 	}
 }

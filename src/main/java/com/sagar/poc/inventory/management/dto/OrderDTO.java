@@ -1,35 +1,18 @@
-package com.sagar.poc.inventory.management.jpa.entity;
+package com.sagar.poc.inventory.management.dto;
 
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+public class OrderDTO {
 
-@Entity
-public class Order {
-
-	@Id
-	@Column(name = "ORDER_ID")
 	private Long orderId;
-	@Column(name = "ORDER_DATE")
 	private Date orderDate;
-	@Column(name = "ORDER_AMOUNT")
 	private Long orderAmount;
-	@Column(name = "DISCOUNT")
 	private Long discount;
-	@Column(name = "TAX_AMOUNT")
 	private Long taxAmount;
-	@Column(name = "NET_AMOUNT")
 	private Long netAmount;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "order")
-	private List<OrderDetails> orderItems;
+	private List<OrderDetailsDTO> orderItems;
 	
 	public Long getOrderId() {
 		return orderId;
@@ -67,10 +50,10 @@ public class Order {
 	public void setNetAmount(Long netAmount) {
 		this.netAmount = netAmount;
 	}
-	public List<OrderDetails> getOrderItems() {
+	public List<OrderDetailsDTO> getOrderItems() {
 		return orderItems;
 	}
-	public void setOrderItems(List<OrderDetails> orderItems) {
+	public void setOrderItems(List<OrderDetailsDTO> orderItems) {
 		this.orderItems = orderItems;
 	}
 	

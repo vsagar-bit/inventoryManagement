@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sagar.poc.inventory.management.jpa.entity.ProductCategory;
 import com.sagar.poc.inventory.management.jpa.repository.ProductCategoryRepository;
 
+@Service
 public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Autowired
@@ -28,6 +30,12 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	public List<ProductCategory> listOfProdctCategories() {
 		
 		return (List<ProductCategory>) productCategoryRepository.findAll();
+	}
+
+	@Override
+	public ProductCategory getByName(String name) {
+		
+		return productCategoryRepository.getByName(name);
 	}
 	
 }

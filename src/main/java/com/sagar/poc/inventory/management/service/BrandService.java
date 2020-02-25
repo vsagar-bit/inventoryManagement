@@ -10,6 +10,6 @@ public interface BrandService {
 	public Brand createBrand(Brand brand);
 	public Optional<Brand> getBrand(Long id);
 	public List<Brand> listOfBrand();
-	public List<Brand> getBrandByName(String name);
+	public Brand getBrandByName(String name);
 	
 }
