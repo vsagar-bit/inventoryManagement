@@ -27,7 +27,7 @@ public class Brand {
     @Column(name = "DESCRIPTION")
     private String description;
     
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "brand")
     List<Product> products;
 
     public Long getId() {
