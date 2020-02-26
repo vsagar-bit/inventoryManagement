@@ -1,5 +1,6 @@
 package com.sagar.poc.inventory.management.service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +56,24 @@ public class ProductServiceImpl implements  ProductService {
 	public List<Product> getBySizeAndType(String size, Long categoryId) {
 		
 		return productRepository.getBySizeAndType(size, categoryId);
+	}
+
+	@Override
+	public void deleteBySellerId(Long sellerId) {
+		
+		productRepository.deleteBySellerId(sellerId);
+	}
+
+	@Override
+	public void deleteByBrandId(Long brandId) {
+		
+		productRepository.deleteByBrandId(brandId);
+	}
+
+	@Override
+	public BigInteger getCountBySellerId(Long sellerId) {
+		
+		return productRepository.getCountBySellerId(sellerId);
 	}
 
 }

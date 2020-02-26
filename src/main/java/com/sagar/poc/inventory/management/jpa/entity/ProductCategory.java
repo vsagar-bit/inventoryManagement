@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,6 +17,7 @@ public class ProductCategory {
 
     @Id
     @Column(name = "PRODUCTCATOGORY_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long productCategoryId;
 
     @Column(name = "PRODUCTCATOGORY_NAME")

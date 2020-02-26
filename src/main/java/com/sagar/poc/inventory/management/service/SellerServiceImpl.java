@@ -39,6 +39,12 @@ public class SellerServiceImpl implements SellerService {
 		
 		return null;
 	}
+
+	@Override
+	public void deleteSellerById(Long id) {
+		sellerRepo.deleteById(id);
+		
+	}
 	
 
 }

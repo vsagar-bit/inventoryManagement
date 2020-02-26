@@ -2,12 +2,13 @@ package com.sagar.poc.inventory.management.jpa.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,6 +18,7 @@ public class Seller {
 
 	@Id
     @Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     
     @Column(name = "SELLER_NAME")
@@ -28,7 +30,7 @@ public class Seller {
     @Column(name = "IS_ACTIVE")
     private String isActive;
     
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "seller")
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "seller", cascade = CascadeType.ALL)
     List<Product> products;
 
 	public Long getId() {

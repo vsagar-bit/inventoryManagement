@@ -44,6 +44,11 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, L
 	@Query(nativeQuery = true, value = "select count(*) from Product where SELLER_ID = ?1")
 	public BigInteger getCountBySellerId(Long sellerId);
 	
+	@Query(nativeQuery = true, value = "delete from Product where SELLER_ID = ?1")
+	public void deleteBySellerId(Long sellerId);
+	
+	@Query(nativeQuery = true, value = "delete from Product where BRAND_ID = ?1")
+	public void deleteByBrandId(Long brandId);
 	
 	
 }

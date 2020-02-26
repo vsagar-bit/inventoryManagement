@@ -11,5 +11,7 @@ public interface BrandService {
 	public Optional<Brand> getBrand(Long id);
 	public List<Brand> listOfBrand();
 	public Brand getBrandByName(String name);
+	public void deleteById(Long id);
 	
 }
+

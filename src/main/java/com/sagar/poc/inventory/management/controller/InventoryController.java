@@ -1,5 +1,6 @@
 package com.sagar.poc.inventory.management.controller;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -7,14 +8,20 @@ import java.util.stream.Collectors;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sagar.poc.inventory.management.dto.BrandDTO;
 import com.sagar.poc.inventory.management.dto.ProductDTO;
+import com.sagar.poc.inventory.management.dto.SellerDTO;
 import com.sagar.poc.inventory.management.jpa.entity.Brand;
 import com.sagar.poc.inventory.management.jpa.entity.Product;
 import com.sagar.poc.inventory.management.jpa.entity.ProductCategory;
+import com.sagar.poc.inventory.management.jpa.entity.Seller;
 import com.sagar.poc.inventory.management.service.BrandService;
 import com.sagar.poc.inventory.management.service.OrderService;
 import com.sagar.poc.inventory.management.service.ProductCategoryService;
@@ -87,4 +94,44 @@ public class InventoryController {
 		else return null;
 		
 	}
+	
+	@GetMapping("/product/countBy")
+	public BigInteger getProductCountBySeller(@RequestParam("sellerId") String sellerId) {
+		return productService.getCountBySellerId(Long.parseLong(sellerId));
+	}
+	
+	@PostMapping("/seller/save") 
+	public Boolean saveSeller(SellerDTO seller) {
+		Seller entity = sellerService.createSeller(InventoryUtil.getSeller(seller));
+		// can cascade products save
+		seller.getProducts().stream().map(e -> InventoryUtil.getProduct(e)).forEach(e -> {
+			e.setSeller(entity);
+			productService.createProduct(e);
+		});
+		return true;
+	}
+	
+	@PostMapping("/brand/save") 
+	public Boolean saveBrand(BrandDTO brand) {
+		Brand entity = brandService.createBrand(InventoryUtil.getBrand(brand));
+		// can cascade products save
+		brand.getProducts().stream().map(e -> InventoryUtil.getProduct(e)).forEach(e -> {
+			e.setBrand(entity);
+			productService.createProduct(e);
+		});
+		return true;
+	}
+	
+	@DeleteMapping("seller/{id}")
+	public Boolean deleteSeller(@PathParam("id") String id) {
+		sellerService.deleteSellerById(Long.parseLong(id));
+		return true;
+	}
+	
+	@DeleteMapping("brand/{id}")
+	public Boolean deleteBrand(@PathParam("id") String id) {
+		brandService.deleteById(Long.parseLong(id));
+		return true;
+	}
+	
 }

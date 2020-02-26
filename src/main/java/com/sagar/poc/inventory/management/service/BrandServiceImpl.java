@@ -37,5 +37,11 @@ public class BrandServiceImpl implements BrandService{
 		
 		return (List<Brand>) brandRepo.findAll();
 	}
+
+	@Override
+	public void deleteById(Long id) {
+		brandRepo.deleteById(id);
+		
+	}
 	
 }
